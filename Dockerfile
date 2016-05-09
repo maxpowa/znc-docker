@@ -3,8 +3,9 @@ FROM alpine:3.3
 ENV ZNC_VERSION 1.6.3
 ENV ZNCSTRAP_BRANCH dev
 
-RUN apk add --no-cache --update -t build-deps make wget bison openssl-dev swig perl-dev python3-dev icu-dev && \
-    apk add --no-cache -u musl gcc g++ && rm -rf /var/cache/apk/* && \
+RUN apk add --no-cache --update -t build-deps make wget bison && \
+    apk add --no-cache -u musl gcc g++ icu-dev openssl-dev swig perl-dev python3-dev && \
+    rm -rf /var/cache/apk/* && \
     mkdir -p /src && \
     cd /src && \
     wget http://znc.in/releases/znc-${ZNC_VERSION}.tar.gz && \
